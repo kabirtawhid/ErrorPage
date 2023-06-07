@@ -4,10 +4,6 @@ import sys
 from string import Template
 import os
 
-path = r'./'
-
-print(os.listdir(path))
-
 
 def main():
   
@@ -42,17 +38,17 @@ export default $name;
 def create_export():
   path = r'./'
   files = os.listdir(path)
-  import_template = Template("import $name from $name;\n")
+  import_template = Template("import $name from './$name';\n")
   export_template = '''
 export {
-          '''
+'''
   code = ''
   for file in files:
     if file.endswith('.jsx'):
       file = file.split('.')
       file = file[0]
       code += import_template.substitute(name = file)
-      export_template +=  file + ',\n'
+      export_template += '\t'*5 + file + ',\n'
   export_template += '}'
   code += export_template
 

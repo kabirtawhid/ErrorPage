@@ -52,7 +52,7 @@ export {
   export_template += '}'
   code += export_template
 
-  file = open('export.js', 'w')
+  file = open('index.js', 'w')
   file.write(code)
   file.close()
 
